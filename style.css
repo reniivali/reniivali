@@ -112,3 +112,13 @@ body {
 .subSection h4 {
 	margin: 0;
 }
+
+.center img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.imageCaption {
+	padding: 5px;
+}

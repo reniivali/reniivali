@@ -4,6 +4,14 @@
 	src: url("firaCode.ttf") format("truetype");
 }
 
+a {
+	color: #74c7ec;
+}
+
+a:visited {
+	color: #b4befe;
+}
+
 body {
 	font-family: 'Fira Code', monospace;
 	background-color: #1e1e2e;
@@ -76,4 +84,31 @@ body {
 
 .section {
 	text-align: center;
+}
+
+.section img {
+	border-radius: 10px;
+	transition: all .2s;
+}
+
+.section img:hover {
+	box-shadow: rgba(0,0,0,0.5) 5px 5px 10px;
+}
+
+.subSection {
+	border-radius: 10px;
+	border: 3px solid rgba(0,0,0,0);
+	padding: 10px;
+	transition: all .5s;
+	margin-bottom: 10px;
+}
+
+.subSection:hover {
+	background-color: #11111b;
+	border: 3px solid #45475a;
+	box-shadow: rgba(0,0,0,0.5) 5px 5px 10px;
+}
+
+.subSection h4 {
+	margin: 0;
 }

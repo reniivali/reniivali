@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Renii's Website</title>
 	<link rel="stylesheet" href="style.css">
+	<script src="clicker.js"></script>
 	<script src="main.js"></script>
 </head>
 <body>
@@ -21,8 +22,12 @@
 		<div class="navButton">
 			<h2 class="navText">Blender</h2>
 		</div>
+		<div class="navButton">
+			<h2 class="navText">Clicker</h2>
+		</div>
 	</div>
 	<div id="content">
+		<!-- HOME -->
 		<div class="section">
 			<img id="mainpfp" src="assets/pfp.png" alt="profile photo">
 			<h1>Hi, I'm Renii!</h1>
@@ -34,6 +39,7 @@
 				I like to create models using Blender as well, although I do that more just for fun.
 			</h4>
 		</div>
+		<!-- PROJECTS -->
 		<div class="section" style="text-align: left;">
 			<h1>Projects</h1>
 			<div class="subSection">
@@ -52,6 +58,7 @@
 				</h4>
 			</div>
 		</div>
+		<!-- BLENDER -->
 		<div class="section">
 			<h1>Blender</h1>
 			<div class="subSection center">
@@ -93,6 +100,24 @@
 			<div class="subSection center">
 				<img style="width: 100%;" src="assets/10.png" alt="minceraft">
 				<h4 class="imageCaption">A neat render of a minceraft base.</h4>
+			</div>
+		</div>
+		<!-- CLICKER -->
+		<div class="section">
+			<div class="flexContainer">
+				<div class="subSection">
+					<h2>Clicker</h2>
+					<button id="click">Click</button>
+					<div class="subSection">
+						<h2 class="noMargin">Statistics</h2>
+						<h4 class="preserveWhitespace">Clicks                  : <span id="clicks">0</span></h4>
+						<h4 class="preserveWhitespace">Clicks per second (CPS) : <span id="cps">0</span></h4>
+						<h4 class="preserveWhitespace">Clicks per Click (CPC)  : <span id="cpc">0</span></h4>
+					</div>
+				</div>
+				<div class="subSection" id="upgrades">
+					<h2>Upgrades</h2>
+				</div>
 			</div>
 		</div>
 	</div>

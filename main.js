@@ -31,4 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			navSection = i;
 		});
 	}
+
+	//clicker
+	gei('click').addEventListener('click', click.click);
+	click.newUpgrade("Mouse.Reinforcement", 10, 1.2, 0, 1);
 });

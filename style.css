@@ -179,3 +179,7 @@ body {
 	border: 3px solid #45475a;
 	box-shadow: rgba(0,0,0,0.5) 5px 5px 10px;
 }
+
+.hide {
+	display: none;
+}

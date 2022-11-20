@@ -20,7 +20,9 @@ const click = {
 		let upgrade = this.createUpgradeMenu(name, costIncrease, cps, cpc);
 		gei('upgrades').appendChild(upgrade)
 
-		gei(name + "Buy").addEventListener('click', this.buyUpgrade(name))
+		/*gei(name + "Buy").onclick = () => {
+			this.buyUpgrade(name);
+		}*/
 
 		this.updateUpgradeMenu(name, cost);
 	},
@@ -36,9 +38,9 @@ const click = {
 		return el;
 	},
 
-	createUpgradeMenu: function(upgrade, costInc) {
+	createUpgradeMenu: function(upgrade, costInc, cps, cpc) {
 		let el = this.getSubsectionTemplate();
-		el.innerHTML = `<h3 class="noMargin">${upgrade}</h3><h4 class="noMargin preserveWhitespace">Cost  : <span id="${upgrade + "Cost"}">0</span></h4><h4 class="noMargin preserveWhitespace">Cost* : <span>${costInc}</span></h4><h4 class="noMargin preserveWhitespace">CPS+  : <span id="${upgrade + "CPS"}">${cps}</span></h4><h4 class="noMargin preserveWhitespace">CPC+  : <span id="${upgrade + "CPC"}">${cpc}</span></h4><button id="${upgrade + "Buy"}" class="upgradeButton">Purchase</button>`;
+		el.innerHTML = `<h3 class="noMargin">${upgrade}</h3><h4 class="noMargin preserveWhitespace">Cost  : <span id="${upgrade + "Cost"}">0</span></h4><h4 class="noMargin preserveWhitespace">Cost* : <span>${costInc}</span></h4><h4 class="noMargin preserveWhitespace">CPS+  : <span id="${upgrade + "CPS"}">${cps}</span></h4><h4 class="noMargin preserveWhitespace">CPC+  : <span id="${upgrade + "CPC"}">${cpc}</span></h4><button onclick="click.buyUpgrade(${upgrade})" class="upgradeButton">Purchase</button>`;
 		return el;
 	},
 

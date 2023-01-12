@@ -183,3 +183,34 @@ body {
 .hide {
 	display: none;
 }
+
+.grid {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.grid .subSection {
+	width: 47%;
+	border: 3px solid #45475a;
+	margin-right: 1%;
+	flex-basis: auto;
+	flex-grow: 1;
+	flex-shrink: 1;
+}
+
+.grid .subSection:hover {
+	border: 3px solid #f5c2e7;
+}
+
+#borderRadDemo {
+	height: 200px;
+	width: 200px;
+	background-color: #11111b;
+	border: 3px solid #ecbebe;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	transition: none;
+}

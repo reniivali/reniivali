@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Renii's Website</title>
 	<link rel="stylesheet" href="style.css">
-	<script src="clicker.js"></script>
+	<!--<script src="clicker.js"></script>-->
 	<script src="main.js"></script>
 </head>
 <body>
@@ -21,6 +21,9 @@
 		</div>
 		<div class="navButton">
 			<h2 class="navText">Blender</h2>
+		</div>
+		<div class="navButton">
+			<h2 class="navText">CSS Refs</h2>
 		</div>
 		<div class="navButton hide">
 			<h2 class="navText">Clicker</h2>
@@ -100,6 +103,19 @@
 			<div class="subSection center">
 				<img style="width: 100%;" src="assets/10.png" alt="minceraft">
 				<h4 class="imageCaption">A neat render of a minceraft base.</h4>
+			</div>
+		</div>
+		<!-- CSS REFS -->
+		<div class="section grid">
+			<div class="subSection">
+				<h1>This page contains references for various CSS properties and their effects.</h1>
+				<p>Inside each box is a property and an example of what it does, along with a slider or other affector for changing that property in realtime, to see its effect</p>
+			</div>
+			<div class="subSection">
+				<h1>Border Radius</h1>
+				<div id="borderRadDemo"></div>
+				<p id="borderRadDemoVal">Radius: 5px</p><br>
+				<input type="range" min="0" max="100" value="5" class="slider" id="borderRadDemoSlide">
 			</div>
 		</div>
 		<!-- CLICKER -->

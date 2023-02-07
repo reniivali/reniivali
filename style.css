@@ -214,3 +214,22 @@ body {
 	display: block;
 	transition: none;
 }
+
+.demo {
+	background-color: #11111b;
+	border: 3px solid #ecbebe;
+}
+
+#flexDemoContainer {
+	display: flex;
+}
+
+.flexDemo {
+	flex-basis: auto;
+	flex-grow: 1;
+	flex-shrink: 1;
+	margin: 10px;
+	height: 100px;
+	vertical-align: middle;
+	line-height: 100px;
+}

@@ -42,6 +42,35 @@ d.addEventListener('DOMContentLoaded', function() {
 		d.getElementById("borderRadDemoVal").innerHTML = `Radius: ${borderRadSlider.value}px`;
 	});
 
+	const flexDemoBoxes = d.getElementsByClassName("flexDemo");
+	for (let i = 0; i < 4; i++) {
+		const flexBasisVal = d.createElement("p");
+		flexBasisVal.id = `flexBasisDemoVal${i}`;
+		flexBasisVal.innerHTML = `Flex Basis: auto`;
+
+		const flexBasisSlider = d.createElement("input");
+		flexBasisSlider.type = "range";
+		flexBasisSlider.min = "0";
+		flexBasisSlider.max = "500";
+		flexBasisSlider.value = "1";
+		flexBasisSlider.className = "slider";
+		flexBasisSlider.id = `flexBasisDemoSlide${i}`;
+		flexDemoBoxes[i].append(flexBasisVal);
+		flexDemoBoxes[i].append(flexBasisSlider);
+		flexBasisSlider.addEventListener('input', function() {
+			flexDemoBoxes[i].style.flexBasis = flexBasisSlider.value + "px";
+			d.getElementById(`flexBasisDemoVal${i}`).innerHTML = `Flex Basis: ${flexBasisSlider.value}px`;
+		});
+	}
+
+	d.getElementById("flexDirection").addEventListener('change', function() {
+		d.getElementById("flexDemoContainer").style.flexDirection = d.getElementById("flexDirection").value;
+	});
+
+	d.getElementById("flexWrap").addEventListener('change', function() {
+		d.getElementById("flexDemoContainer").style.flexWrap = d.getElementById("flexWrap").value;
+	});
+
 	//clicker
 	//gei('click').addEventListener('click', click.click);
 	//click.newUpgrade("Mouse.Reinforcement", 10, 1.2, 0, 1);

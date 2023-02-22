@@ -135,8 +135,8 @@
 				</div>
 				<h2 style="margin: 0;">Container Properties</h2>
 				<div class="flexContainer">
-					<div class="demo flexDemo">
-						<h2>Flex Direction</h2>
+					<div class="demo flexBox" style="width: 300px;">
+						<h2>Direction</h2>
 						<select id="flexDirection">
 							<option value="row">Row</option>
 							<option value="row-reverse">Row Reverse</option>
@@ -144,21 +144,26 @@
 							<option value="column-reverse">Column Reverse</option>
 						</select>
 					</div>
-					<div class="demo flexDemo">
-						<h2>Flex Wrap</h2>
+					<div class="demo flexBox" style="width: 160px">
+						<h2>Wrap</h2>
 						<select id="flexWrap">
 							<option value="nowrap">No Wrap</option>
 							<option value="wrap">Wrap</option>
 							<option value="wrap-reverse">Wrap Reverse</option>
 						</select>
 					</div>
-					<div class="demo flexDemo">
+					<div class="demo flexBox">
 						<h2>Basis (all elements)</h2>
 						<button onclick="unsetBasis()">Unset</button>
 					</div>
-					<div class="demo flexDemo">
+					<div class="demo flexBox">
 						<h2>Raw Width (all elements)</h2>
 						<button onclick="unsetWidth()">Unset</button>
+					</div>
+					<div class="demo flexBox">
+						<h2>Add / Remove Demo Boxes</h2>
+						<button onclick="addFlexDemoBox()">Add Box</button>
+						<button onclick="removeFlexDemoBox()">Remove Box</button>
 					</div>
 				</div>
 			</div>

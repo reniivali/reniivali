@@ -222,12 +222,12 @@ body {
 
 #flexDemoContainer {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	flex-direction: row;
+	overflow-x: auto;
 }
 
 .flexDemo {
-	flex-basis: auto;
 	flex-grow: 1;
 	flex-shrink: 1;
 	margin: 10px;
@@ -241,6 +241,19 @@ body {
 }
 
 .flexDemo p {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.flexBox {
+	flex-basis: auto;
+	flex-grow: 1;
+	flex-shrink: 1;
+	margin: 10px;
+	height: fit-content;
+}
+
+.flexBox h2 {
 	margin-top: 5px;
 	margin-bottom: 5px;
 }

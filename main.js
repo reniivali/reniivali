@@ -1,7 +1,8 @@
 const d = document;
+let iFlexDemoBoxes = 4;
 
 function unsetBasis() {
-	for (let i = 0; i < 4; i++) {
+	for (let i = 0; i < iFlexDemoBoxes - 1; i++) {
 		const flexDemoBox = d.getElementsByClassName("flexDemo")[i];
 		flexDemoBox.style.flexBasis = "";
 		d.getElementById(`flexBasisDemoVal${i}`).innerHTML = `Flex Basis: Unset`;
@@ -10,11 +11,68 @@ function unsetBasis() {
 }
 
 function unsetWidth() {
-	for (let i = 0; i < 4; i++) {
+	for (let i = 0; i < iFlexDemoBoxes - 1; i++) {
 		const flexDemoBox = d.getElementsByClassName("flexDemo")[i];
 		flexDemoBox.style.width = "";
 		d.getElementById(`flexRawWidthVal${i}`).innerHTML = `Raw Width: Unset`;
 		d.getElementById(`flexRawWidthSlide${i}`).value = "1";
+	}
+}
+
+/**
+ * @param min Slider's minimum value
+ * @param max Slider's maximum value
+ * @param step Slider's step value
+ * @param value Slider's starting value
+ * @param id Slider's base id
+ * @param did What the display p element should call the changing value
+ * @param dval What the display p element should display as the starting value
+ * @param cngval What the slider should change (CSS property in CamelCase)
+ * @param nid the number of the demo box
+ * @param appendTo the demo box element passed in
+ * @param unit (OPTIONAL) the unit of the value (px, %, etc.)
+ */
+function sliderSetup(min, max, step, value, id, did, dval, cngval, nid, appendTo, unit) {
+	const disp = d.createElement("p");
+	disp.id = `${id}DemoVal${nid}`;
+	disp.innerHTML = `${did}: ${dval}`
+
+	const slider = d.createElement("input");
+	slider.type = "range";
+	slider.min = min;
+	slider.max = max;
+	slider.value = value;
+	slider.step = step;
+	slider.className = "slider";
+	slider.id = `${id}DemoSlide${nid}`;
+
+	appendTo.append(disp, slider);
+	slider.addEventListener('input', function() {
+		appendTo.style[cngval] = slider.value + unit;
+		disp.innerHTML = `${did}: ${slider.value}${unit}`;
+	});
+}
+
+function addFlexDemoBox() {
+	const flexDemoContainer = d.getElementById("flexDemoContainer");
+	const flexDemoBox = d.createElement("div");
+	flexDemoBox.className = "demo flexDemo";
+	flexDemoBox.id = `flexDemo${iFlexDemoBoxes + 1}`;
+	flexDemoBox.innerHTML = `<h1>Box ${iFlexDemoBoxes + 1}</h1>`;
+	flexDemoContainer.append(flexDemoBox);
+	iFlexDemoBoxes++;
+	sliderSetup(0, 1000, 1, 1, "flexBasis", "Flex Basis", "Unset", "flexBasis", iFlexDemoBoxes, flexDemoBox, "px");
+	sliderSetup(0, 1000, 1, 1, "flexRawWidth", "Raw Width", "Unset", "width", iFlexDemoBoxes, flexDemoBox, "px");
+	sliderSetup(0, 1, 0.001, 1, "flexGrow", "Flex Grow", "1", "flexGrow", iFlexDemoBoxes, flexDemoBox, "");
+	sliderSetup(0, 1, 0.001, 1, "flexShrink", "Flex Shrink", "1", "flexShrink", iFlexDemoBoxes, flexDemoBox, "");
+}
+
+function removeFlexDemoBox() {
+	if (iFlexDemoBoxes > 4) {
+		d.getElementById(`flexDemo${iFlexDemoBoxes}`).remove();
+		iFlexDemoBoxes--;
+	} else {
+		alert("You can't remove any more boxes!");
 	}
 }
 
@@ -62,75 +120,10 @@ d.addEventListener('DOMContentLoaded', function() {
 
 	const flexDemoBoxes = d.getElementsByClassName("flexDemo");
 	for (let i = 0; i < 4; i++) {
-		const flexBasisVal = d.createElement("p");
-		flexBasisVal.id = `flexBasisDemoVal${i}`;
-		flexBasisVal.innerHTML = `Flex Basis: Unset`;
-
-		const flexBasisSlider = d.createElement("input");
-		flexBasisSlider.type = "range";
-		flexBasisSlider.min = "0";
-		flexBasisSlider.max = "1000";
-		flexBasisSlider.value = "1";
-		flexBasisSlider.className = "slider";
-		flexBasisSlider.id = `flexBasisDemoSlide${i}`;
-		flexDemoBoxes[i].append(flexBasisVal, flexBasisSlider);
-		flexBasisSlider.addEventListener('input', function() {
-			flexDemoBoxes[i].style.flexBasis = flexBasisSlider.value + "px";
-			flexBasisVal.innerHTML = `Flex Basis: ${flexBasisSlider.value}px`;
-		});
-
-		const flexGrowVal = d.createElement("p");
-		flexGrowVal.id = `flexGrowDemoVal${i}`;
-		flexGrowVal.innerHTML = `Flex Grow: 1`;
-
-		const flexGrowSlider = d.createElement("input");
-		flexGrowSlider.type = "range";
-		flexGrowSlider.min = "0";
-		flexGrowSlider.max = "1";
-		flexGrowSlider.value = "1";
-		flexGrowSlider.step = "0.001";
-		flexGrowSlider.className = "slider";
-		flexGrowSlider.id = `flexGrowDemoSlide${i}`;
-		flexDemoBoxes[i].append(flexGrowVal, flexGrowSlider);
-		flexGrowSlider.addEventListener('input', function() {
-			flexDemoBoxes[i].style.flexGrow = flexGrowSlider.value;
-			flexGrowVal.innerHTML = `Flex Grow: ${flexGrowSlider.value}`;
-		});
-
-		const flexShrinkVal = d.createElement("p");
-		flexShrinkVal.id = `flexShrinkDemoVal${i}`;
-		flexShrinkVal.innerHTML = `Flex Shrink: 1`;
-
-		const flexShrinkSlider = d.createElement("input");
-		flexShrinkSlider.type = "range";
-		flexShrinkSlider.min = "0";
-		flexShrinkSlider.max = "1";
-		flexShrinkSlider.value = "1";
-		flexShrinkSlider.step = "0.001";
-		flexShrinkSlider.className = "slider";
-		flexShrinkSlider.id = `flexShrinkDemoSlide${i}`;
-		flexDemoBoxes[i].append(flexShrinkVal, flexShrinkSlider);
-		flexShrinkSlider.addEventListener('input', function() {
-			flexDemoBoxes[i].style.flexShrink = flexShrinkSlider.value;
-			flexShrinkVal.innerHTML = `Flex Shrink: ${flexShrinkSlider.value}`;
-		});
-
-		const rawWidthVal = d.createElement("p");
-		rawWidthVal.id = `flexRawWidthVal${i}`;
-		rawWidthVal.innerHTML = `Raw Width: Unset`
-
-		const rawWidthSlider = d.createElement("input");
-		rawWidthSlider.type = "range";
-		rawWidthSlider.min = "0";
-		rawWidthSlider.max = "1000";
-		rawWidthSlider.value = "1";
-		rawWidthSlider.className = "slider";
-		rawWidthSlider.id = `flexRawWidthSlide${i}`;
-		flexDemoBoxes[i].append(rawWidthVal, rawWidthSlider)
-		rawWidthSlider.addEventListener('input', function() {
-			flexDemoBoxes[i].style.width = rawWidthSlider.value + "px";
-			rawWidthVal.innerHTML = `Raw Width: ${rawWidthSlider.value}px`
-		});
+		sliderSetup(0, 1000, 1, 1, "flexBasis", "Flex Basis", "Unset", "flexBasis", i, flexDemoBoxes[i], "px");
+		sliderSetup(0, 1000, 1, 1, "flexRawWidth", "Raw Width", "Unset", "width", i, flexDemoBoxes[i], "px");
+		sliderSetup(0, 1, 0.001, 1, "flexGrow", "Flex Grow", "1", "flexGrow", i, flexDemoBoxes[i], "");
+		sliderSetup(0, 1, 0.001, 1, "flexShrink", "Flex Shrink", "1", "flexShrink", i, flexDemoBoxes[i], "");
 	}
 
 	d.getElementById("flexDirection").addEventListener('change', function() {

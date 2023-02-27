@@ -114,7 +114,7 @@
 			<div class="subSection">
 				<h1>Border Radius</h1>
 				<div id="borderRadDemo"></div>
-				<p id="borderRadDemoVal">Radius: 5px</p><br>
+				<p id="borderRadDemoVal" style="margin-bottom: 0;">Radius: 5px</p>
 				<input type="range" min="0" max="100" value="5" class="slider" id="borderRadDemoSlide">
 			</div>
 			<div class="subSection" style="flex: 85%">
@@ -153,11 +153,11 @@
 						</select>
 					</div>
 					<div class="demo flexBox">
-						<h2>Basis (all elements)</h2>
+						<h2>Basis (all boxes)</h2>
 						<button onclick="unsetBasis()">Unset</button>
 					</div>
 					<div class="demo flexBox">
-						<h2>Raw Width (all elements)</h2>
+						<h2>Raw Width (all boxes)</h2>
 						<button onclick="unsetWidth()">Unset</button>
 					</div>
 					<div class="demo flexBox">
@@ -167,6 +167,14 @@
 					</div>
 				</div>
 			</div>
+			<div class="subSection" id="boxShadowDemoContainer">
+				<h1>Box Shadow</h1>
+				<div id="boxShadowDemo"></div>
+				<div id="boxShadowDemoSliders"></div>
+			</div>
+			<!--<div class="subSection">
+				<h1>some random property</h1>
+			</div>-->
 		</div>
 		<!-- CLICKER -->
 		<div class="section">

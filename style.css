@@ -215,7 +215,26 @@ body {
 	transition: none;
 }
 
+#boxShadowDemo {
+	height: 200px;
+	width: 200px;
+	background-color: #11111b;
+	border: 3px solid #ecbebe;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	transition: none;
+}
+
 .demo {
+	background-color: #181825;
+	border: 3px solid #45475a;
+	border-radius: 10px;
+	transition: background-color .2s, border .2s;
+}
+
+.demo:hover {
 	background-color: #11111b;
 	border: 3px solid #ecbebe;
 }
@@ -307,4 +326,20 @@ button {
 
 button:hover {
 	border-color: #f5c2e7;
+}
+
+#boxShadowDemoSliders {
+	display: flex;
+	flex-direction: row;
+}
+
+#boxShadowDemoSliders > div {
+	margin: 5px;
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: 100px;
+}
+
+#boxShadowDemoSliders > div > input {
+	width: 90%;
 }

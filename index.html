@@ -107,7 +107,7 @@
 		</div>
 		<!-- CSS REFS -->
 		<div class="section grid">
-			<div class="subSection">
+			<div class="subSection" style="flex: 85%">
 				<h1>This page contains references for various CSS properties and their effects.</h1>
 				<p>Inside each box is a property and an example of what it does, along with a slider or other effector for changing that property in realtime, to see its effect</p>
 			</div>
@@ -116,6 +116,11 @@
 				<div id="borderRadDemo"></div>
 				<p id="borderRadDemoVal" style="margin-bottom: 0;">Radius: 5px</p>
 				<input type="range" min="0" max="100" value="5" class="slider" id="borderRadDemoSlide">
+			</div>
+			<div class="subSection" id="boxShadowDemoContainer">
+				<h1>Box Shadow</h1>
+				<div id="boxShadowDemo"></div>
+				<div id="boxShadowDemoSliders"></div>
 			</div>
 			<div class="subSection" style="flex: 85%">
 				<h1>Flexbox</h1>
@@ -166,11 +171,6 @@
 						<button onclick="removeFlexDemoBox()">Remove Box</button>
 					</div>
 				</div>
-			</div>
-			<div class="subSection" id="boxShadowDemoContainer">
-				<h1>Box Shadow</h1>
-				<div id="boxShadowDemo"></div>
-				<div id="boxShadowDemoSliders"></div>
 			</div>
 			<!--<div class="subSection">
 				<h1>some random property</h1>

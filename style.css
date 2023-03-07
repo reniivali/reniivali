@@ -4,13 +4,19 @@
 	src: url("firaCode.ttf") format("truetype");
 }
 
-a {
-	color: #74c7ec;
-}
-
-a:visited {
-	color: #b4befe;
-}
+a { color: #74c7ec; }
+.navText { margin: 0; }
+.noMargin { margin: 0; }
+.hide { display: none; }
+.subSection h4 { margin: 0; }
+a:visited { color: #b4befe; }
+.imageCaption { padding: 5px; }
+#content { margin-left: 155px; }
+.section { text-align: center; }
+select:hover { border-color: #f5c2e7; }
+button:hover { border-color: #f5c2e7; }
+#boxShadowDemoSliders > div > input { width: 90%; }
+.section img:hover { box-shadow: rgba(0,0,0,0.5) 5px 5px 10px; }
 
 body {
 	font-family: 'Fira Code', monospace;
@@ -51,10 +57,6 @@ body {
 	background-color: #181825;
 }
 
-.navText {
-	margin: 0;
-}
-
 .navButton {
 	color: #a6adc8;
 	padding: 5px;
@@ -70,10 +72,6 @@ body {
 	box-shadow: rgba(0,0,0,0.5) 5px 5px 10px;
 }
 
-#content {
-	margin-left: 155px;
-}
-
 #mainpfp {
 	display: block;
 	margin-left: auto;
@@ -82,17 +80,9 @@ body {
 	border-radius: 20px;
 }
 
-.section {
-	text-align: center;
-}
-
 .section img {
 	border-radius: 10px;
 	transition: all .2s;
-}
-
-.section img:hover {
-	box-shadow: rgba(0,0,0,0.5) 5px 5px 10px;
 }
 
 .subSection {
@@ -109,22 +99,15 @@ body {
 	box-shadow: rgba(0,0,0,0.5) 5px 5px 10px;
 }
 
-.subSection h4 {
-	margin: 0;
-}
-
 .center img {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.imageCaption {
-	padding: 5px;
-}
-
 .flexContainer {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .flexContainer > div {
@@ -137,11 +120,6 @@ body {
 	white-space: break-spaces;
 	text-align: left;
 }
-
-.noMargin {
-	margin: 0;
-}
-
 
 #click {
 	color: #cdd6f4;
@@ -180,10 +158,6 @@ body {
 	box-shadow: rgba(0,0,0,0.5) 5px 5px 10px;
 }
 
-.hide {
-	display: none;
-}
-
 .grid {
 	display: flex;
 	flex-wrap: wrap;
@@ -199,9 +173,7 @@ body {
 	flex-shrink: 1;
 }
 
-.grid .subSection:hover {
-	border: 3px solid #f5c2e7;
-}
+.grid .subSection:hover { border: 3px solid #f5c2e7; }
 
 #borderRadDemo {
 	height: 200px;
@@ -309,10 +281,6 @@ select {
 	transition: all .2s;
 }
 
-select:hover {
-	border-color: #f5c2e7;
-}
-
 button {
 	background-color: #1e1e2e;
 	border: 3px solid #45475a;
@@ -322,10 +290,6 @@ button {
 	padding: 5px;
 	margin: 0 5px 10px 0;
 	transition: all .2s;
-}
-
-button:hover {
-	border-color: #f5c2e7;
 }
 
 #boxShadowDemoSliders {
@@ -340,6 +304,15 @@ button:hover {
 	flex-basis: 100px;
 }
 
-#boxShadowDemoSliders > div > input {
-	width: 90%;
+@media screen and (max-width: 600px) {
+	.navMain {
+		margin-left: -155px;
+		height: auto;
+	}
+	.navHead h2 {
+		left: -100px;
+	}
+	#content {
+		margin-left: 0;
+	}
 }

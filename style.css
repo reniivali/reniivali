@@ -83,6 +83,7 @@ body {
 .section img {
 	border-radius: 10px;
 	transition: all .2s;
+	max-width: 90%;
 }
 
 .subSection {
@@ -304,14 +305,59 @@ button {
 	flex-basis: 100px;
 }
 
+#hamburger {
+	display: none;
+	top: 0;
+	left: 0;
+	position: fixed;
+	z-index: 100;
+	transition: all .2s;
+	background-color: #181825;
+	padding: 0 10px 0 10px;
+	border-radius: 0 0 10px 0;
+}
+
+#hamburger > .bar {
+	width: 40px;
+	height: 5px;
+	background-color: #cdd6f4;
+	margin: 10px 0;
+	transition: all .2s;
+}
+
 @media screen and (max-width: 600px) {
 	.navMain {
 		margin-left: -155px;
 		height: auto;
+		border-radius: 0 0 10px 0;
+		transition: all .2s;
 	}
+
 	.navHead h2 {
 		left: -100px;
+		transition: all .2s;
 	}
+
+	.subSection {
+		background-color: #11111b;
+		border: 3px solid #45475a;
+		box-shadow: rgba(0,0,0,0.5) 5px 5px 10px;
+	}
+
+	#boxShadowDemoSliders {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	#boxShadowDemoSliders > div {
+		flex-basis: 45%;
+	}
+
+	#hamburger {
+		display: block;
+	}
+
 	#content {
 		margin-left: 0;
 	}

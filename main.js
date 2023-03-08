@@ -1,6 +1,8 @@
 const d = document;
 let iFlexDemoBoxes = 4;
 
+let menuOpen = false;
+
 function unsetBasis() {
 	for (let i = 0; i < iFlexDemoBoxes - 1; i++) {
 		const flexDemoBox = d.getElementsByClassName("flexDemo")[i];
@@ -86,9 +88,24 @@ function removeFlexDemoBox() {
 }
 
 d.addEventListener('DOMContentLoaded', function() {
+	const menuHamburger = d.getElementById("hamburger");
 	let navSection = 0;
 	let navSections = d.getElementsByClassName('section');
 	let navButtons = d.getElementsByClassName('navButton');
+
+	menuHamburger.addEventListener('click', function() {
+		if (menuOpen) {
+			d.getElementsByClassName("navMain")[0].style.marginLeft = "-155px";
+			d.getElementById("hamburger").style.left = "0";
+			d.getElementById("name").style.left = "-100px"
+			menuOpen = false;
+		} else {
+			d.getElementById("name").style.left = "47px";
+			d.getElementById("hamburger").style.left = "155px";
+			d.getElementsByClassName("navMain")[0].style.marginLeft = "0";
+			menuOpen = true;
+		}
+	});
 
 	function checkShown() {
 		for (let i = 0; i < navSections.length; i++) {

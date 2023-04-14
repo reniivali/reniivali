@@ -4,6 +4,21 @@
 	src: url("firaCode.ttf") format("truetype");
 }
 
+.ff { background: hsla(  0, 100%, 50%, 0.7); }
+.fl { background: hsla( 60, 100%, 50%, 0.7); }
+.fr { background: hsla(120, 100%, 50%, 0.7); }
+.fba { background: hsla(180, 100%, 50%, 0.7); }
+.ft { background: hsla(240, 100%, 50%, 0.7); }
+.fbt { background: hsla(300, 100%, 50%, 0.7); }
+
+.cf {position: absolute}
+.ff {transform: rotateY(0deg) translateZ(100px)}
+.fl {transform: rotateY(-90deg) translateZ(100px)}
+.fr {transform: rotateY(90deg) translateZ(100px)}
+.fba {transform: rotateY(180deg) translateZ(100px)}
+.ft {transform: rotateX(90deg) translateZ(100px)}
+.fbt {transform: rotateX(-90deg) translateZ(100px)}
+
 a { color: #74c7ec; }
 .navText { margin: 0; }
 .noMargin { margin: 0; }
@@ -200,6 +215,24 @@ body {
 	transition: none;
 }
 
+#rotateDemo {
+	position: relative;
+	width: 200px;
+	height: 200px;
+	transform-style: preserve-3d;
+	transform: translateZ(-100px);
+}
+
+#rotDemoContainer {
+	width: 200px;
+	height: 200px;
+	border: 1px solid #CCC;
+	perspective: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
 .demo {
 	background-color: #181825;
 	border: 3px solid #45475a;
@@ -299,6 +332,30 @@ button {
 }
 
 #boxShadowDemoSliders > div {
+	margin: 5px;
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: 100px;
+}
+
+.propDemo {
+	height: 200px;
+	width: 200px;
+	background-color: #11111b;
+	border: 3px solid #ecbebe;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	transition: none;
+}
+
+.demoSliders {
+	display: flex;
+	flex-direction: row;
+}
+
+.demoSliders > div {
 	margin: 5px;
 	flex-grow: 1;
 	flex-shrink: 1;

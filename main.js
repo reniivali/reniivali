@@ -1,6 +1,5 @@
 const d = document;
 let iFlexDemoBoxes = 4;
-
 let menuOpen = false;
 
 function unsetBasis() {
@@ -167,15 +166,25 @@ d.addEventListener('DOMContentLoaded', function() {
 	sliderSetup(0, 100, 1, 0, "boxShadowBlur", "blur-radius", "0", "", 1, boxShadowContainer, false,  "px");
 	sliderSetup(0, 100, 1, 0, "boxShadowSpread", "spread-radius", "0", "", 1, boxShadowContainer, false,  "px");
 
-	function updateBoxShadow() {
-		const x = d.getElementById("boxShadowXDemoSlide1").value;
-		const y = d.getElementById("boxShadowYDemoSlide1").value;
-		const blur = d.getElementById("boxShadowBlurDemoSlide1").value;
-		const spread = d.getElementById("boxShadowSpreadDemoSlide1").value;
-		boxShadowDemo.style.boxShadow = `${x}px ${y}px ${blur}px ${spread}px black`;
-	}
+	const rotDemo = d.getElementById("rotateDemo");
+	const rotDemoSld = d.getElementById("rotateDemoSliders");
+	sliderSetup(0, 360, 1, 0, "rotateZ", "rotate", "0", "", 1, rotDemoSld, false, "deg");
+	sliderSetup(0, 360, 1, 0, "rotateX", "rotateX", "0", "", 1, rotDemoSld, false, "deg");
+	sliderSetup(0, 360, 1, 0, "rotateY", "rotateY", "0", "", 1, rotDemoSld, false, "deg");
 
-	setInterval(updateBoxShadow, 50);
+	setInterval(() => {
+		const bsx = d.getElementById("boxShadowXDemoSlide1").value;
+		const bsy = d.getElementById("boxShadowYDemoSlide1").value;
+		const bsblur = d.getElementById("boxShadowBlurDemoSlide1").value;
+		const bsspread = d.getElementById("boxShadowSpreadDemoSlide1").value;
+		boxShadowDemo.style.boxShadow = `${bsx}px ${bsy}px ${bsblur}px ${bsspread}px black`;
+
+		const rz = d.getElementById("rotateZDemoSlide1").value;
+		const rx = d.getElementById("rotateXDemoSlide1").value;
+		const ry = d.getElementById("rotateYDemoSlide1").value;
+		rotDemo.style.transform = `rotateZ(${rz}deg) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(-100px)`;
+	}, 50)
+
 
 	//clicker
 	//gei('click').addEventListener('click', click.click);

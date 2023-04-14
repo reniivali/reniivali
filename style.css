@@ -11,13 +11,21 @@
 .ft { background: hsla(240, 100%, 50%, 0.7); }
 .fbt { background: hsla(300, 100%, 50%, 0.7); }
 
-.cf {position: absolute}
-.ff {transform: rotateY(0deg) translateZ(100px)}
-.fl {transform: rotateY(-90deg) translateZ(100px)}
-.fr {transform: rotateY(90deg) translateZ(100px)}
-.fba {transform: rotateY(180deg) translateZ(100px)}
-.ft {transform: rotateX(90deg) translateZ(100px)}
-.fbt {transform: rotateX(-90deg) translateZ(100px)}
+.cf {
+	position: absolute;
+	border-radius: 0 !important;
+	font-size: 40px;
+	text-align: center;
+	font-weight: bold;
+	color: #cdd6f4;
+	line-height: 200px;
+}
+.ff {transform: rotateY(0deg) translateZ(106px)}
+.fl {transform: rotateY(-90deg) translateZ(106px)}
+.fr {transform: rotateY(90deg) translateZ(106px)}
+.fba {transform: rotateY(180deg) translateZ(106px)}
+.ft {transform: rotateX(90deg) translateZ(106px)}
+.fbt {transform: rotateX(-90deg) translateZ(106px)}
 
 a { color: #74c7ec; }
 .navText { margin: 0; }
@@ -217,15 +225,15 @@ body {
 
 #rotateDemo {
 	position: relative;
-	width: 200px;
-	height: 200px;
+	width: 206px;
+	height: 206px;
 	transform-style: preserve-3d;
 	transform: translateZ(-100px);
 }
 
 #rotDemoContainer {
-	width: 200px;
-	height: 200px;
+	width: 206px;
+	height: 206px;
 	border: 1px solid #CCC;
 	perspective: 400px;
 	margin-left: auto;
@@ -339,8 +347,8 @@ button {
 }
 
 .propDemo {
-	height: 200px;
-	width: 200px;
+	height: 206px;
+	width: 206px;
 	background-color: #11111b;
 	border: 3px solid #ecbebe;
 	border-radius: 5px;
@@ -353,6 +361,7 @@ button {
 .demoSliders {
 	display: flex;
 	flex-direction: row;
+	margin-top: 5px;
 }
 
 .demoSliders > div {
@@ -360,6 +369,15 @@ button {
 	flex-grow: 1;
 	flex-shrink: 1;
 	flex-basis: 100px;
+	transition: all .2s;
+	border: 3px solid #00000000;
+}
+
+.demoSliders > div:hover {
+	background-color: #1e1e2e;
+	border: 3px solid #f5c2e7;
+	box-shadow: rgba(0,0,0,0.5) 5px 5px 10px;
+	z-index: 100;
 }
 
 #hamburger {

@@ -168,9 +168,12 @@ d.addEventListener('DOMContentLoaded', function() {
 
 	const rotDemo = d.getElementById("rotateDemo");
 	const rotDemoSld = d.getElementById("rotateDemoSliders");
-	sliderSetup(0, 360, 1, 0, "rotateZ", "rotate", "0", "", 1, rotDemoSld, false, "deg");
-	sliderSetup(0, 360, 1, 0, "rotateX", "rotateX", "0", "", 1, rotDemoSld, false, "deg");
-	sliderSetup(0, 360, 1, 0, "rotateY", "rotateY", "0", "", 1, rotDemoSld, false, "deg");
+	sliderSetup(0, 360, 1, 0, "rotateZ", "Rotate Z", "0", "", 1, rotDemoSld, false, "deg");
+	sliderSetup(0, 360, 1, 0, "rotateX", "Rotate X", "0", "", 1, rotDemoSld, false, "deg");
+	sliderSetup(0, 360, 1, 0, "rotateY", "Rotate Y", "0", "", 1, rotDemoSld, false, "deg");
+	sliderSetup(-1000, 100, 1, -100, "translateZ", "Translate Z", "-100", "", 1, rotDemoSld, false, "px");
+	sliderSetup(-1000, 1000, 1, 0, "translateX", "Translate X", "0", "", 1, rotDemoSld, false, "px");
+	sliderSetup(-1000, 1000, 1, 0, "translateY", "Translate Y", "0", "", 1, rotDemoSld, false, "px");
 
 	setInterval(() => {
 		const bsx = d.getElementById("boxShadowXDemoSlide1").value;
@@ -182,7 +185,10 @@ d.addEventListener('DOMContentLoaded', function() {
 		const rz = d.getElementById("rotateZDemoSlide1").value;
 		const rx = d.getElementById("rotateXDemoSlide1").value;
 		const ry = d.getElementById("rotateYDemoSlide1").value;
-		rotDemo.style.transform = `rotateZ(${rz}deg) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(-100px)`;
+		const tz = d.getElementById("translateZDemoSlide1").value;
+		const tx = d.getElementById("translateXDemoSlide1").value;
+		const ty = d.getElementById("translateYDemoSlide1").value;
+		rotDemo.style.transform = `rotateZ(${rz}deg) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(${tz}px) translateX(${tx}px) translateY(${ty}px)`;
 	}, 50)
 
 

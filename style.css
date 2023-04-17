@@ -229,6 +229,7 @@ body {
 	height: 206px;
 	transform-style: preserve-3d;
 	transform: translateZ(-100px);
+	top: -3px; left: -3px;
 }
 
 #rotDemoContainer {

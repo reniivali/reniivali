@@ -401,6 +401,20 @@ button {
 	transition: all .2s;
 }
 
+textarea {
+	border-radius: 5px;
+	border: #45475a 3px solid;
+	background-color: #1e1e2e;
+	color: #cdd6f4;
+	font-family: 'Fira Code', monospace;
+	padding: 5px;
+}
+
+#textModifierSubmit {
+	width: 507.517px;
+	margin-left: 5px;
+}
+
 @media screen and (max-width: 600px) {
 	.navMain {
 		margin-left: -155px;

@@ -2,6 +2,24 @@ const d = document;
 let iFlexDemoBoxes = 4;
 let menuOpen = false;
 
+function sarcasText() {
+	const og = d.getElementById("textModifierInput").value;
+	let words = og.split(" ");
+	let newWords = [];
+	for (let i = 0; i < words.length; i++) {
+		let temp = []
+		for (let j = 0; j < words[i].length; j++) {
+			if (j % 2 === 0) {
+				temp.push(words[i][j].toLowerCase());
+			} else {
+				temp.push(words[i][j].toUpperCase());
+			}
+		}
+		newWords.push(temp.join(""));
+	}
+	d.getElementById("textModifierOutput").innerHTML = `Output:<br><br>${newWords.join(" ")}`;
+}
+
 function unsetBasis() {
 	for (let i = 0; i < iFlexDemoBoxes - 1; i++) {
 		const flexDemoBox = d.getElementsByClassName("flexDemo")[i];

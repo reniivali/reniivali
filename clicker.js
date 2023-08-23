@@ -4,7 +4,7 @@ let cpc    = 1;
 
 let upgrades = [];
 
-const gei = (id) => {return document.getElementById(id)};
+const gei = (id) => { console.log("grabbing element '"+id+"'"); return document.getElementById(id)};
 
 const click = {
 	newUpgrade: function(name, cost, costMult, lcps, lcpc) {
@@ -13,7 +13,8 @@ const click = {
 			cost: cost,
 			costIncrease: costMult,
 			cps: lcps,
-			cpc: lcpc
+			cpc: lcpc,
+			own: 0
 		});
 
 		let upgrade = this.createUpgradeMenu(name, costMult, lcps, lcpc);
@@ -43,13 +44,16 @@ const click = {
 			<h4 class="noMargin preserveWhitespace">Cost Multiplier : <span>${costInc}</span></h4>
 			<h4 class="noMargin preserveWhitespace">CPS Increase    : <span id="${upgrade + "CPS"}">${lCps}</span></h4>
 			<h4 class="noMargin preserveWhitespace">CPC Increase    : <span id="${upgrade + "CPC"}">${lCpc}</span></h4>
+			<h4 class="noMargin preserveWhitespace">You Own         : <span id="${upgrade + "Own"}">0</span></h4>
 			<button id="${upgrade + "Buy"}" class="upgradeButton">Purchase</button>
 		`;
 		return el;
 	},
 
-	updateUpgradeMenu: function(upgrade, cost) {
+	updateUpgradeMenu: function(upgrade, cost, own) {
 		gei(upgrade + "Cost").innerHTML = cost;
+		gei(upgrade + "Own").inenrHTML = own;
+		console.log("???")
 	},
 
 	updateStats: function() {
@@ -67,9 +71,10 @@ const click = {
 					console.log(`upgrade can be purchased, running purchase code...`)
 					clicks -= upgrades[i].cost;
 					upgrades[i].cost *= upgrades[i].costIncrease;
+					upgrades[i].own++;
 					cps += upgrades[i].cps;
 					cpc += upgrades[i].cpc;
-					this.updateUpgradeMenu(upgrade, upgrades[i].cost);
+					this.updateUpgradeMenu(upgrade, upgrades[i].cost, upgrades[i].own);
 					this.updateStats();
 				}
 			}

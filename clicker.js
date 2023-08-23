@@ -52,7 +52,7 @@ const click = {
 
 	updateUpgradeMenu: function(upgrade, cost, own) {
 		gei(upgrade + "Cost").innerHTML = cost;
-		gei(upgrade + "Own").inenrHTML = own;
+		gei(upgrade + "Own").innerHTML = own;
 		console.log("???")
 	},
 

@@ -4,23 +4,22 @@ let cpc    = 1;
 
 let upgrades = [];
 
-const d = document;
-const gei = (id) => document.getElementById(id);
+const gei = (id) => {return document.getElementById(id)};
 
 const click = {
-	newUpgrade: function(name, cost, costIncrease, cps, cpc) {
+	newUpgrade: function(name, cost, costMult, lcps, lcpc) {
 		upgrades.push({
 			name: name,
 			cost: cost,
-			costIncrease: eval(costIncrease),
-			cps: cps,
-			cpc: cpc
+			costIncrease: costMult,
+			cps: lcps,
+			cpc: lcpc
 		});
 
-		let upgrade = this.createUpgradeMenu(name, costIncrease, cps, cpc);
-		gei('upgrades').appendChild(upgrade)
+		let upgrade = this.createUpgradeMenu(name, costMult, lcps, lcpc);
+		document.getElementById("upgrades").appendChild(upgrade)
 
-		gei(name + "Buy").addEventListener('click', this.buyUpgrade(name))
+		gei(name + "Buy").addEventListener('click', function () {click.buyUpgrade(name)});
 
 		this.updateUpgradeMenu(name, cost);
 	},
@@ -36,9 +35,16 @@ const click = {
 		return el;
 	},
 
-	createUpgradeMenu: function(upgrade, costInc) {
+	createUpgradeMenu: function(upgrade, costInc, lCps, lCpc) {
 		let el = this.getSubsectionTemplate();
-		el.innerHTML = `<h3 class="noMargin">${upgrade}</h3><h4 class="noMargin preserveWhitespace">Cost  : <span id="${upgrade + "Cost"}">0</span></h4><h4 class="noMargin preserveWhitespace">Cost* : <span>${costInc}</span></h4><h4 class="noMargin preserveWhitespace">CPS+  : <span id="${upgrade + "CPS"}">${cps}</span></h4><h4 class="noMargin preserveWhitespace">CPC+  : <span id="${upgrade + "CPC"}">${cpc}</span></h4><button id="${upgrade + "Buy"}" class="upgradeButton">Purchase</button>`;
+		el.innerHTML = `
+			<h3 class="noMargin">${upgrade}</h3>
+			<h4 class="noMargin preserveWhitespace">Cost            : <span id="${upgrade + "Cost"}">0</span></h4>
+			<h4 class="noMargin preserveWhitespace">Cost Multiplier : <span>${costInc}</span></h4>
+			<h4 class="noMargin preserveWhitespace">CPS Increase    : <span id="${upgrade + "CPS"}">${lCps}</span></h4>
+			<h4 class="noMargin preserveWhitespace">CPC Increase    : <span id="${upgrade + "CPC"}">${lCpc}</span></h4>
+			<button id="${upgrade + "Buy"}" class="upgradeButton">Purchase</button>
+		`;
 		return el;
 	},
 
@@ -46,19 +52,32 @@ const click = {
 		gei(upgrade + "Cost").innerHTML = cost;
 	},
 
+	updateStats: function() {
+		document.getElementById('cps').innerHTML = cps
+		document.getElementById('cpc').innerHTML = cpc
+	},
+
 	buyUpgrade: function(upgrade) {
+		console.log(`searching upgrades list for upgrade with id "${upgrade}"`)
 		for (let i = 0; i < upgrades.length; i++) {
+			console.log(`checking index ${i}`)
 			if (upgrades[i].name === upgrade) {
-				if (clicks >= upgrade[i].cost) {
-					clicks -= upgrade[i].cost;
-					upgrade[i].cost *= upgrade[i].costIncrease;
-					cps += upgrade[i].cps;
-					cpc += upgrade[i].cpc;
-					this.updateUpgradeMenu(upgrade, upgrade[i].cost);
-					return true;
+				console.log(`found upgrade with id: "${upgrade}", attempting to purchase`)
+				if (clicks >= upgrades[i].cost) {
+					console.log(`upgrade can be purchased, running purchase code...`)
+					clicks -= upgrades[i].cost;
+					upgrades[i].cost *= upgrades[i].costIncrease;
+					cps += upgrades[i].cps;
+					cpc += upgrades[i].cpc;
+					this.updateUpgradeMenu(upgrade, upgrades[i].cost);
+					this.updateStats();
 				}
-				return false;
 			}
 		}
 	}
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+	document.getElementById("click").addEventListener("click", function () { click.click() })
+	click.newUpgrade("ClickerUpgrade", 15, 2, 0, 1);
+})

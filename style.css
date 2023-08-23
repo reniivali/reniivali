@@ -415,6 +415,18 @@ textarea {
 	margin-left: 5px;
 }
 
+.mWidth-50 {
+	max-width: 50%;
+}
+
+.centerFlexContent {
+	justify-content: center;
+}
+
+.centerText {
+	text-align: center;
+}
+
 @media screen and (max-width: 600px) {
 	.navMain {
 		margin-left: -155px;

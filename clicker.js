@@ -22,7 +22,7 @@ const click = {
 
 		gei(name + "Buy").addEventListener('click', function () {click.buyUpgrade(name)});
 
-		this.updateUpgradeMenu(name, cost);
+		this.updateUpgradeMenu(name, cost, 0);
 	},
 
 	click: function() {
@@ -53,7 +53,6 @@ const click = {
 	updateUpgradeMenu: function(upgrade, cost, own) {
 		gei(upgrade + "Cost").innerHTML = cost;
 		gei(upgrade + "Own").innerHTML = own;
-		console.log("???")
 	},
 
 	updateStats: function() {

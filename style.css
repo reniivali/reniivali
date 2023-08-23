@@ -427,6 +427,10 @@ textarea {
 	text-align: center;
 }
 
+.fitContent {
+	width: fit-content !important;
+}
+
 @media screen and (max-width: 600px) {
 	.navMain {
 		margin-left: -155px;

@@ -4,7 +4,7 @@ let cpc    = 1;
 
 let upgrades = [];
 
-const gei = (id) => { console.log("grabbing element '"+id+"'"); return document.getElementById(id)};
+const gei = (id) => { console.log("[INFO] grabbing element '"+id+"'"); return document.getElementById(id)};
 
 const click = {
 	newUpgrade: function(name, cost, costMult, lcps, lcpc) {
@@ -18,7 +18,7 @@ const click = {
 		});
 
 		let upgrade = this.createUpgradeMenu(name, costMult, lcps, lcpc);
-		document.getElementById("upgrades").appendChild(upgrade)
+		document.getElementById("upgradesFlex").appendChild(upgrade)
 
 		gei(name + "Buy").addEventListener('click', function () {click.buyUpgrade(name)});
 
@@ -27,7 +27,7 @@ const click = {
 
 	click: function() {
 		clicks += cpc;
-		gei('clicks').innerHTML = clicks;
+		gei('clicks').innerHTML = JSON.stringify(Math.floor(clicks));
 	},
 
 	getSubsectionTemplate: function() {
@@ -47,6 +47,7 @@ const click = {
 			<h4 class="noMargin preserveWhitespace">You Own         : <span id="${upgrade + "Own"}">0</span></h4>
 			<button id="${upgrade + "Buy"}" class="upgradeButton">Purchase</button>
 		`;
+		el.classList.add("fitContent");
 		return el;
 	},
 
@@ -60,20 +61,46 @@ const click = {
 		document.getElementById('cpc').innerHTML = cpc
 	},
 
-	buyUpgrade: function(upgrade) {
-		console.log(`searching upgrades list for upgrade with id "${upgrade}"`)
+	applyCPS: function() {
+		let obj = [];
+		console.log(`appCPS [INFO] : searching upgrade list for upgrades that add CPS...`)
 		for (let i = 0; i < upgrades.length; i++) {
-			console.log(`checking index ${i}`)
+			if (upgrades[i].cps > 0) {
+				console.log(`appCPS [INFO] : found upgrade that adds CPS, adding to temporary list`)
+				obj.push({
+					upgrade: upgrades[i].name,
+					own: upgrades[i].own,
+					val: upgrades[i].cps
+					//applicable upgrades here eventually
+				})
+			}
+		}
+		let tempCPS = 0;
+		console.log(`appCPS [INFO] : calculating CPS variable based on found upgrades`)
+		for (let i = 0; i < obj.length; i++) {
+			let temp = obj[i].own * obj[i].val
+			tempCPS += temp;
+			console.log(`appCPS [INFO] : added upgrade "${obj.upgrade}" to the calculation. it added ${temp} CPS, and total temp CPS is now ${tempCPS}`)
+		}
+		cps = tempCPS;
+	},
+
+	buyUpgrade: function(upgrade) {
+		console.log(`buyUpgrade [INFO]: searching upgrades list for upgrade with id "${upgrade}"`)
+		for (let i = 0; i < upgrades.length; i++) {
+			console.log(`buyUpgrade [INFO]: checking index ${i}`)
 			if (upgrades[i].name === upgrade) {
-				console.log(`found upgrade with id: "${upgrade}", attempting to purchase`)
+				console.log(`buyUpgrade [INFO]: found upgrade with id: "${upgrade}", attempting to purchase`)
 				if (clicks >= upgrades[i].cost) {
-					console.log(`upgrade can be purchased, running purchase code...`)
+					console.log(`buyUpgrade [INFO]: upgrade can be purchased, running purchase code...`)
 					clicks -= upgrades[i].cost;
-					upgrades[i].cost *= upgrades[i].costIncrease;
+					upgrades[i].cost = Math.floor(upgrades[i].cost * upgrades[i].costIncrease);
 					upgrades[i].own++;
-					cps += upgrades[i].cps;
 					cpc += upgrades[i].cpc;
 					this.updateUpgradeMenu(upgrade, upgrades[i].cost, upgrades[i].own);
+					if (upgrades[i].cps > 0) {
+						this.applyCPS();
+					}
 					this.updateStats();
 				}
 			}
@@ -83,5 +110,11 @@ const click = {
 
 document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("click").addEventListener("click", function () { click.click() })
-	click.newUpgrade("ClickerUpgrade", 15, 2, 0, 1);
+	click.newUpgrade("Clicker-Upgrade", 15, 1.1, 0, 1);
+	click.newUpgrade("Auto-Clicker", 100, 1.1, 1, 0);
+
+	setInterval(function() {
+		clicks += cps/60;
+		gei("clicks").innerHTML = JSON.stringify(Math.floor(clicks));
+	}, 1000/60)
 })

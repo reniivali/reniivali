@@ -110,8 +110,12 @@ const click = {
 
 document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("click").addEventListener("click", function () { click.click() })
-	click.newUpgrade("Clicker-Upgrade", 15, 1.1, 0, 1);
-	click.newUpgrade("Auto-Clicker", 100, 1.1, 1, 0);
+	click.newUpgrade("Clicker-Upgrade",     15,    1.1, 0,   1);
+	click.newUpgrade("Clicker-Upgrade-II",  500,   1.2, 0,   10);
+	click.newUpgrade("Clicker-Upgrade-III", 10000, 1.3, 0,   100);
+	click.newUpgrade("Auto-Clicker",        100,   1.1, 1,   0);
+	click.newUpgrade("Auto-Clicker-Mk.II",  1000,  1.2, 10,  0);
+	click.newUpgrade("Auto-Clicker-Mk.III", 10000, 1.3, 100, 0);
 
 	setInterval(function() {
 		clicks += cps/60;

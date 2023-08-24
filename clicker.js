@@ -7,18 +7,32 @@ let upgrades = [];
 const gei = (id) => { console.log("[INFO] grabbing element '"+id+"'"); return document.getElementById(id)};
 
 const click = {
-	newUpgrade: function(name, cost, costMult, lcps, lcpc) {
-		upgrades.push({
-			name: name,
-			cost: cost,
-			costIncrease: costMult,
-			cps: lcps,
-			cpc: lcpc,
-			own: 0
-		});
+	newUpgrade: function(name, cClass, cost, costMult, lcps, lcpc, appItem) {
+		if (cClass === "items") {
+			upgrades.push({
+				name: name,
+				cClass: cClass,
+				cost: cost,
+				costIncrease: costMult,
+				cps: lcps,
+				cpc: lcpc,
+				own: 0
+			});
+		} else if (cClass === "upgrades") {
+			upgrades.push({
+				name: name,
+				cClass: cClass,
+				cost: cost,
+				costIncrease: costMult,
+				cps: lcps,
+				cpc: lcpc,
+				own: 0,
+				appItem: appItem
+			});
+		}
 
 		let upgrade = this.createUpgradeMenu(name, costMult, lcps, lcpc);
-		document.getElementById("upgradesFlex").appendChild(upgrade)
+		document.getElementById(`${cClass}Flex`).appendChild(upgrade)
 
 		gei(name + "Buy").addEventListener('click', function () {click.buyUpgrade(name)});
 
@@ -110,12 +124,12 @@ const click = {
 
 document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("click").addEventListener("click", function () { click.click() })
-	click.newUpgrade("Clicker-Upgrade",     15,    1.1, 0,   1);
-	click.newUpgrade("Clicker-Upgrade-II",  500,   1.2, 0,   10);
-	click.newUpgrade("Clicker-Upgrade-III", 10000, 1.3, 0,   100);
-	click.newUpgrade("Auto-Clicker",        100,   1.1, 1,   0);
-	click.newUpgrade("Auto-Clicker-Mk.II",  1000,  1.2, 10,  0);
-	click.newUpgrade("Auto-Clicker-Mk.III", 10000, 1.3, 100, 0);
+	click.newUpgrade("Clicker-Upgrade",     "upgrades", 15,    1.1, 0,   1  , "Mouse");
+	click.newUpgrade("Clicker-Upgrade-II",  "upgrades", 500,   1.2, 0,   10 , "Mouse");
+	click.newUpgrade("Clicker-Upgrade-III", "upgrades", 10000, 1.3, 0,   100, "Mouse");
+	click.newUpgrade("Auto-Clicker",        "items",    100,   1.1, 1,   0);
+	click.newUpgrade("Auto-Clicker-Mk.II",  "items",    1000,  1.2, 10,  0);
+	click.newUpgrade("Auto-Clicker-Mk.III", "items",    10000, 1.3, 100, 0);
 
 	setInterval(function() {
 		clicks += cps/60;

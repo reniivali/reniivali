@@ -8,28 +8,16 @@ const gei = (id) => { console.log("[INFO] grabbing element '"+id+"'"); return do
 
 const click = {
 	newUpgrade: function(name, cClass, cost, costMult, lcps, lcpc, appItem) {
-		if (cClass === "items") {
-			upgrades.push({
-				name: name,
-				cClass: cClass,
-				cost: cost,
-				costIncrease: costMult,
-				cps: lcps,
-				cpc: lcpc,
-				own: 0
-			});
-		} else if (cClass === "upgrades") {
-			upgrades.push({
-				name: name,
-				cClass: cClass,
-				cost: cost,
-				costIncrease: costMult,
-				cps: lcps,
-				cpc: lcpc,
-				own: 0,
-				appItem: appItem
-			});
-		}
+		upgrades.push({
+			name: name,
+			cClass: cClass,
+			cost: cost,
+			costIncrease: costMult,
+			cps: lcps,
+			cpc: lcpc,
+			own: 0,
+			appItem: appItem
+		});
 
 		let upgrade = this.createUpgradeMenu(name, costMult, lcps, lcpc);
 		document.getElementById(`${cClass}Flex`).appendChild(upgrade)
@@ -77,26 +65,41 @@ const click = {
 
 	applyCPS: function() {
 		let obj = [];
-		console.log(`appCPS [INFO] : searching upgrade list for upgrades that add CPS...`)
+		console.log(`appCPS [INFO] : searching upgrade list for items that add CPS...`)
 		for (let i = 0; i < upgrades.length; i++) {
 			if (upgrades[i].cps > 0) {
-				console.log(`appCPS [INFO] : found upgrade that adds CPS, adding to temporary list`)
+				console.log(`appCPS [INFO] : found item ("${upgrades[i].name}") that adds CPS, adding to temporary list`)
 				obj.push({
 					upgrade: upgrades[i].name,
 					own: upgrades[i].own,
-					val: upgrades[i].cps
-					//applicable upgrades here eventually
+					val: upgrades[i].cps,
+					appUpg: upgrades[i].appItem
 				})
 			}
 		}
 		let tempCPS = 0;
-		console.log(`appCPS [INFO] : calculating CPS variable based on found upgrades`)
+		console.log(`appCPS [INFO] : calculating CPS variable based on found items...`)
 		for (let i = 0; i < obj.length; i++) {
 			let temp = obj[i].own * obj[i].val
 			tempCPS += temp;
-			console.log(`appCPS [INFO] : added upgrade "${obj.upgrade}" to the calculation. it added ${temp} CPS, and total temp CPS is now ${tempCPS}`)
+			console.log(`appCPS [INFO] : added item "${obj[i].upgrade}" to the calculation. it added ${temp} CPS, and total temp CPS is now ${tempCPS}`)
+		}
+		console.log(`appCPS [INFO] : searching for applicable upgrades to items...`)
+		for (let i = 0; i < obj.length; i++) {
+			console.log(`appCPS [INFO] : searching for upgrade "${obj[i].appUpg}"`)
+			for (let j = 0; j < upgrades.length; j++) {
+				if (upgrades[j].name === obj[i].appUpg) {
+					console.log(`appCPS [INFO] : found "${obj[i].appUpg}" at index ${j}, calculating its effect on CPS...`)
+					let temp = upgrades[j].own;
+					temp *= (obj[i].own * obj[i].val)
+					tempCPS += temp;
+					console.log(`appCPS [INFO] : added upgrade "${obj[i].appUpg}" to the calculation. it added ${temp} CPS, and total temp CPS is now ${tempCPS}`)
+					break;
+				}
+			}
 		}
 		cps = tempCPS;
+		console.log(`appCPS [INFO] : completed CPS calculation. CPS is now set to ${cps}`)
 	},
 
 	buyUpgrade: function(upgrade) {
@@ -112,11 +115,10 @@ const click = {
 					upgrades[i].own++;
 					cpc += upgrades[i].cpc;
 					this.updateUpgradeMenu(upgrade, upgrades[i].cost, upgrades[i].own);
-					if (upgrades[i].cps > 0) {
-						this.applyCPS();
-					}
+					this.applyCPS();
 					this.updateStats();
 				}
+				break;
 			}
 		}
 	}
@@ -124,12 +126,15 @@ const click = {
 
 document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("click").addEventListener("click", function () { click.click() })
-	click.newUpgrade("Clicker-Upgrade",     "upgrades", 15,    1.1, 0,   1  , "Mouse");
-	click.newUpgrade("Clicker-Upgrade-II",  "upgrades", 500,   1.2, 0,   10 , "Mouse");
-	click.newUpgrade("Clicker-Upgrade-III", "upgrades", 10000, 1.3, 0,   100, "Mouse");
-	click.newUpgrade("Auto-Clicker",        "items",    100,   1.1, 1,   0);
-	click.newUpgrade("Auto-Clicker-Mk.II",  "items",    1000,  1.2, 10,  0);
-	click.newUpgrade("Auto-Clicker-Mk.III", "items",    10000, 1.3, 100, 0);
+	click.newUpgrade("Clicker-Upgrade",            "upgrades", 15,   1.1, 0,   1  , undefined);
+	click.newUpgrade("Clicker-Upgrade-II",         "upgrades", 5e+2, 1.2, 0,   10 , undefined);
+	click.newUpgrade("Clicker-Upgrade-III",        "upgrades", 1e+4, 1.3, 0,   100, undefined);
+	click.newUpgrade("AutoClicker",                "items",    1e+2, 1.1, 1,   0,   "AutoClicker-Upgrade");
+	click.newUpgrade("AutoClicker-Mk.II",          "items",    1e+3, 1.2, 10,  0,   "AutoClicker-Mk.II-Upgrade");
+	click.newUpgrade("AutoClicker-Mk.III",         "items",    1e+4, 1.3, 100, 0,   "AutoClicker-Mk.III-Upgrade");
+	click.newUpgrade("AutoClicker-Upgrade",        "upgrades", 1e+4, 2.1, 0,   0,   undefined)
+	click.newUpgrade("AutoClicker-Mk.II-Upgrade",  "upgrades", 1e+5, 2.1, 0,   0,   undefined)
+	click.newUpgrade("AutoClicker-Mk.III-Upgrade", "upgrades", 1e+6, 2.1, 0,   0,   undefined)
 
 	setInterval(function() {
 		clicks += cps/60;

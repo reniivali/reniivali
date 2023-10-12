@@ -211,11 +211,17 @@
 				<option value="ucase">A-Z</option>
 				<option value="both">a-z, A-Z</option>
 				<option value="num">a-z, A-Z, 0-9</option>
+				<option value="jphi">Hirigana, a-z, A-Z, 0-9</option>
+				<option value="custom">Custom</option>
 			</select>
 			<select class="form-select" id="cipherEDselect" aria-label="Select cipher type">
 				<option value="encode">Encode</option>
 				<option value="decode">Decode</option>
 			</select>
+			<div id="cipherCustomAB" style="display:none;">
+				<br>
+				<textarea id="cipherCustomIn" placeholder="Enter custom charater range here" rows="1" cols="50"></textarea>
+			</div>
 			<br>
 			<textarea id="cipherKey"   placeholder="Enter key here"  rows="1" cols="50"></textarea>
 			<br>

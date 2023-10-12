@@ -106,6 +106,8 @@ const cipher = {
 		ucase: "RNVSKFIDYEHUAMPZXLC TBOGWJQ",
 		both: "nauDysOqAILWNvijgCGHJYodETZmFcprRXkQUtV hxbzBSeMPwlKf",
 		num: "mXfrvBqEydTZlzcSpRD0xGjJ2N91boMsa7Pi3FYIwku8gOL5U4 hCHKAeWVnQt6",
+		jphi: "あXゎゕひぶaPのmGIがぇでぼまわzょけoVW6き ぃえっdZかぐpw1い2るHBぅさそゆDせOちFTLはにSYbりれぎもgぢUてぞゖぽめだJAと5qづhうぉん9uこKfNばぜ4tろeへむざじほ8しぺぬすiぱゐnlQねEたずゑRs3おvをみCびjな7kぁらyゅごゔxふぷどゃつべMrcよ0くげやぴ",
+		custom: ""
 	}
 }
 
@@ -320,4 +322,22 @@ d.addEventListener('DOMContentLoaded', function() {
 		const ty = d.getElementById("translateYDemoSlide1").value;
 		rotDemo.style.transform = `rotateZ(${rz}deg) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(${tz}px) translateX(${tx}px) translateY(${ty}px)`;
 	}, 50)
+
+	let abSelector = d.getElementById('cipherABselect')
+
+	abSelector.addEventListener('change', function (e) {
+		let val = e.target.value;
+		if (val === "custom") {
+			d.getElementById("cipherCustomAB").style.display = "block";
+		} else {
+			d.getElementById("cipherCustomAB").style.display = "none";
+		}
+	})
+
+	let abInput = d.getElementById("cipherCustomIn")
+
+	abInput.addEventListener('change', function (e) {
+		cipher.abs.custom = e.target.value;
+		console.log(`cipher.abs.custom updated to: ${e.target.value}`)
+	});
 });

@@ -6,8 +6,8 @@
 	<link rel="stylesheet" href="style.css">
 	<link rel="shortcut icon" type="image/x-icon" href="Tulin.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="clicker.js"></script>
 	<script src="main.js"></script>
+	<script src="clicker.js"></script>
 </head>
 <body>
 	<div class="navMain">
@@ -209,7 +209,28 @@
 			<br>
 			<br>
 			<button id="textModifierSubmit" onclick="sarcasText()">Convert</button>
-			<p id="textModifierOutput"></p>
+			<p class="output" id="textModifierOutput" style="display:none;"></p>
+
+			<h1>cipher</h1>
+			<select class="form-select" id="cipherABselect" aria-label="Select character range">
+				<option value="default">a-z, A-Z, 0-9, and most ascii characters</option>
+				<option value="lcase">a-z</option>
+				<option value="ucase">A-Z</option>
+				<option value="both">a-z, A-Z</option>
+				<option value="num">a-z, A-Z, 0-9</option>
+			</select>
+			<select class="form-select" id="cipherEDselect" aria-label="Select cipher type">
+				<option value="encode">Encode</option>
+				<option value="decode">Decode</option>
+			</select>
+			<br>
+			<textarea id="cipherKey"   placeholder="Enter key here"  rows="1" cols="50"></textarea>
+			<br>
+			<textarea id="cipherInput" placeholder="Enter text here" rows="1" cols="50"></textarea>
+			<br>
+			<br>
+			<button id="cipherSubmit" onclick="cipher.doCipher()">Convert</button>
+			<p class="output" id="cipherOutput" style="display:none;"></p>
 		</div>
 		<!-- CLICKER -->
 		<div class="section">

@@ -1,3 +1,124 @@
+const cipher = {
+	convertKey: function (key, dict, ab) {
+		//loop through key
+		for (let i = 0; i < key.length; i++) {
+			//figure out the position of current letter
+			let pos;
+			for (let j = 0; j < ab.length; j++) {
+				if (key[i] === ab[j]) {
+					pos = j;
+					break;
+				}
+			}
+
+			// split alphabet string into an array of individual letters
+			let temp = ab.split("");
+			//remove the beginning of the alphabet, up to the letter in the key
+			let end = temp.splice(0, pos)
+			//push the beginning onto the end.
+			for (let j = 0; j < end.length; j++) {
+				temp.push(end[j])
+			}
+			//push final result onto end list
+			dict.push({ab: temp, pos: pos})
+		}
+	},
+
+	encode: function (dict, input, output, key, ab) {
+		//loop through string, append results to output
+		let keyPos = 0;
+		for (let i = 0; i < input.length; i++) {
+			//get current ciphered value
+
+			//if space, skip, and don't run the rest of the code on this char
+			if (input[i] === " ") {
+			output.push(" ")
+			} else {
+				//figure out the position of current letter
+				let pos;
+				for (let j = 0; j < ab.length; j++) {
+					if (input[i] === ab[j]) {
+						pos = j;
+						break;
+					}
+				}
+
+				output.push(dict[keyPos].ab[pos])
+
+				if (keyPos === key.length - 1) {
+					keyPos = 0;
+				} else {
+					keyPos++
+				}
+			}
+		}
+	},
+
+	decode: function (dict, input, output, key, ab) {
+		//loop through string, append results to output
+		let keyPos = 0;
+		for (let i = 0; i < input.length; i++) {
+			//get current ciphered value
+
+			//if space, skip, and don't run the rest of the code on this char
+			if (input[i] === " ") {
+				output.push(" ")
+			} else {
+				//figure out the position of current letter
+				let pos;
+				for (let j = 0; j < ab.length; j++) {
+					if (input[i] === dict[keyPos].ab[j]) {
+						pos = j;
+						break;
+					}
+				}
+
+				output.push(ab[pos])
+
+				if (keyPos === key.length - 1) {
+					keyPos = 0;
+				} else {
+					keyPos++;
+				}
+			}
+		}
+	},
+
+	doCipher: function () {
+		const cipherInput = d.getElementById("cipherInput");
+		const cipherOutput = d.getElementById("cipherOutput");
+		const cipherKey = d.getElementById("cipherKey");
+		const cipherABselect = d.getElementById("cipherABselect");
+		const cipherEDselect = d.getElementById("cipherEDselect");
+		
+		const input = cipherInput.value;
+		let output = [];
+		const key = cipherKey.value;
+		const ab = cipher.abs[cipherABselect.value];
+		const ed = cipherEDselect.value;
+	
+		let dict = [];
+		cipher.convertKey(key, dict, ab);
+	
+		if (ed === "encode") {
+			cipher.encode(dict, input, output, key, ab);
+		} else {
+			cipher.decode(dict, input, output, key, ab);
+		}
+	
+		cipherOutput.innerHTML = `${output.join("")}`;
+		cipherOutput.style.display = "block";
+	},
+
+	abs: {
+		default: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()1234567890-_=+`~,.<>:;'[]{}?/",
+		lcase: "abcdefghijklmnopqrstuvwxyz",
+		ucase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+		both: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+		num: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+	}
+}
+
 const d = document;
 let iFlexDemoBoxes = 4;
 let menuOpen = false;
@@ -18,6 +139,7 @@ function sarcasText() {
 		newWords.push(temp.join(""));
 	}
 	d.getElementById("textModifierOutput").innerHTML = `Output:<br><br>${newWords.join(" ")}`;
+	d.getElementById("textModifierOutput").style.display = "block";
 }
 
 function unsetBasis() {
@@ -208,9 +330,4 @@ d.addEventListener('DOMContentLoaded', function() {
 		const ty = d.getElementById("translateYDemoSlide1").value;
 		rotDemo.style.transform = `rotateZ(${rz}deg) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(${tz}px) translateX(${tx}px) translateY(${ty}px)`;
 	}, 50)
-
-
-	//clicker
-	//gei('click').addEventListener('click', click.click);
-	//click.newUpgrade("Mouse.Reinforcement", 10, 1.2, 0, 1);
 });

@@ -431,6 +431,15 @@ textarea {
 	width: fit-content !important;
 }
 
+.output {
+	border-radius: 5px;
+	border: #45475a 3px solid;
+	width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+	padding: 5px;
+}
+
 @media screen and (max-width: 600px) {
 	.navMain {
 		margin-left: -155px;

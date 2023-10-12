@@ -30,26 +30,21 @@ const cipher = {
 		for (let i = 0; i < input.length; i++) {
 			//get current ciphered value
 
-			//if space, skip, and don't run the rest of the code on this char
-			if (input[i] === " ") {
-			output.push(" ")
+			//figure out the position of current letter
+			let pos;
+			for (let j = 0; j < ab.length; j++) {
+				if (input[i] === ab[j]) {
+					pos = j;
+					break;
+				}
+			}
+
+			output.push(dict[keyPos].ab[pos])
+
+			if (keyPos === key.length - 1) {
+				keyPos = 0;
 			} else {
-				//figure out the position of current letter
-				let pos;
-				for (let j = 0; j < ab.length; j++) {
-					if (input[i] === ab[j]) {
-						pos = j;
-						break;
-					}
-				}
-
-				output.push(dict[keyPos].ab[pos])
-
-				if (keyPos === key.length - 1) {
-					keyPos = 0;
-				} else {
-					keyPos++
-				}
+				keyPos++
 			}
 		}
 	},
@@ -60,26 +55,21 @@ const cipher = {
 		for (let i = 0; i < input.length; i++) {
 			//get current ciphered value
 
-			//if space, skip, and don't run the rest of the code on this char
-			if (input[i] === " ") {
-				output.push(" ")
+			//figure out the position of current letter
+			let pos;
+			for (let j = 0; j < ab.length; j++) {
+				if (input[i] === dict[keyPos].ab[j]) {
+					pos = j;
+					break;
+				}
+			}
+
+			output.push(ab[pos])
+
+			if (keyPos === key.length - 1) {
+				keyPos = 0;
 			} else {
-				//figure out the position of current letter
-				let pos;
-				for (let j = 0; j < ab.length; j++) {
-					if (input[i] === dict[keyPos].ab[j]) {
-						pos = j;
-						break;
-					}
-				}
-
-				output.push(ab[pos])
-
-				if (keyPos === key.length - 1) {
-					keyPos = 0;
-				} else {
-					keyPos++;
-				}
+				keyPos++;
 			}
 		}
 	},
@@ -111,11 +101,11 @@ const cipher = {
 	},
 
 	abs: {
-		default: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()1234567890-_=+`~,.<>:;'[]{}?/",
-		lcase: "abcdefghijklmnopqrstuvwxyz",
-		ucase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-		both: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
-		num: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+		default: "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()1234567890-_=+`~,.<>:;'[]{}?/",
+		lcase: "abcdefghijklmnopqrstuvwxyz ",
+		ucase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ ",
+		both: "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+		num: "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
 	}
 }
 

@@ -107,6 +107,8 @@ const cipher = {
 		both: "nauDysOqAILWNvijgCGHJYodETZmFcprRXkQUtV hxbzBSeMPwlKf",
 		num: "mXfrvBqEydTZlzcSpRD0xGjJ2N91boMsa7Pi3FYIwku8gOL5U4 hCHKAeWVnQt6",
 		jphi: "あXゎゕひぶaPのmGIがぇでぼまわzょけoVW6き ぃえっdZかぐpw1い2るHBぅさそゆDせOちFTLはにSYbりれぎもgぢUてぞゖぽめだJAと5qづhうぉん9uこKfNばぜ4tろeへむざじほ8しぺぬすiぱゐnlQねEたずゑRs3おvをみCびjな7kぁらyゅごゔxふぷどゃつべMrcよ0くげやぴ",
+		jpka: "csㄫQOS8iㄉDyㄣㄩaVㄪㄙ0ㄟuUZㄤㄗㄆxㄏㄎrmㄚㄜM1ㄍlqCzㄘYㄐㄓ7hㄒBㄅvㄕHㄑG3ㄬㄠㄝgTeㄥㄊt9ㄌㄞP5obpLnfXJㄡdㄭREㄧN2ㄈ6ㄦAㄔㄨjㄛWㄖFㄇKㄢ4kㄋIw",
+		jphika: "ぇはぴかㄙるえ9qㄘㄤjㄞㄑけkㄪっㄓやねrぺてへきゖつxにすEゑちㄏしずㄐgㄍㄆのFぶㄋㄉㄚだぷosYㄥりぎぉじKぢゆSㄔOUどさらくぐGJ7Bょれせこともㄎㄈㄅゎ4bみびㄦゃㄨぁC80ごㄌnyㄠZTㄜぽㄇゅぬㄝぅほcざmわ3をぃ2たなㄭlMpゕ5づzㄊまtでiWひuんNろㄫふぱ1ㄖㄩおㄛゐぞa6RPwむㄟげhAㄣゔㄒQそぜHevうめ LVぼㄧIいfㄢXあDばべㄬㄕㄡㄗがよd",
 		custom: ""
 	}
 }

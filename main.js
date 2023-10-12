@@ -101,11 +101,11 @@ const cipher = {
 	},
 
 	abs: {
-		default: "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()1234567890-_=+`~,.<>:;'[]{}?/",
-		lcase: "abcdefghijklmnopqrstuvwxyz ",
-		ucase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ ",
-		both: "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-		num: "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+		default: "Y%.*B{G/A#ULnEzF;yr)tep^3OfQ:m(>h2R5]8@-=w1vqd,7Zc'_4DN?Soij+M[bl&6!xH0<9 gsXW$CKuk}~`IVTaPJ",
+		lcase: "gpmwktdyo qfvhezcrjlusxnbia",
+		ucase: "RNVSKFIDYEHUAMPZXLC TBOGWJQ",
+		both: "nauDysOqAILWNvijgCGHJYodETZmFcprRXkQUtV hxbzBSeMPwlKf",
+		num: "mXfrvBqEydTZlzcSpRD0xGjJ2N91boMsa7Pi3FYIwku8gOL5U4 hCHKAeWVnQt6",
 	}
 }
 

@@ -222,6 +222,8 @@ function removeFlexDemoBox() {
 }
 
 d.addEventListener('DOMContentLoaded', function() {
+	$("#home").load('pages/about.html');
+
 	const menuHamburger = d.getElementById("hamburger");
 	let navSection = 0;
 	let navSections = d.getElementsByClassName('section');

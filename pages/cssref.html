@@ -1,0 +1,83 @@
+<div class="subSection" style="flex: 85%">
+	<h1>This page contains references for various CSS properties and their effects.</h1>
+	<p>Inside each box is a property and an example of what it does, along with a slider or other effector for changing that property in realtime, to see its effect</p>
+</div>
+<!-- BORDER RADIUS -->
+<div class="subSection">
+	<h1>Border Radius</h1>
+	<div id="borderRadDemo"></div>
+	<p id="borderRadDemoVal" style="margin-bottom: 0;">Radius: 5px</p>
+	<input type="range" min="0" max="100" value="5" class="slider" id="borderRadDemoSlide">
+</div>
+<!-- BOX SHADOW -->
+<div class="subSection" id="boxShadowDemoContainer">
+	<h1>Box Shadow</h1>
+	<div id="boxShadowDemo"></div>
+	<div id="boxShadowDemoSliders"></div>
+</div>
+<!-- FLEXBOX -->
+<div class="subSection" style="flex: 85%">
+	<h1>Flexbox</h1>
+	<div id="flexDemoContainer">
+		<div class="demo flexDemo">
+			<h1>Box 1</h1>
+		</div>
+		<div class="demo flexDemo">
+			<h1>Box 2</h1>
+		</div>
+		<div class="demo flexDemo">
+			<h1>Box 3</h1>
+		</div>
+		<div class="demo flexDemo">
+			<h1>Box 4</h1>
+		</div>
+	</div>
+	<h2 style="margin: 0;">Container Properties</h2>
+	<div class="flexContainer">
+		<div class="demo flexBox" style="width: 300px;">
+			<h2>Direction</h2>
+			<select id="flexDirection">
+				<option value="row">Row</option>
+				<option value="row-reverse">Row Reverse</option>
+				<option value="column">Column</option>
+				<option value="column-reverse">Column Reverse</option>
+			</select>
+		</div>
+		<div class="demo flexBox" style="width: 160px">
+			<h2>Wrap</h2>
+			<select id="flexWrap">
+				<option value="nowrap">No Wrap</option>
+				<option value="wrap">Wrap</option>
+				<option value="wrap-reverse">Wrap Reverse</option>
+			</select>
+		</div>
+		<div class="demo flexBox">
+			<h2>Basis (all boxes)</h2>
+			<button onclick="unsetBasis()">Unset</button>
+		</div>
+		<div class="demo flexBox">
+			<h2>Raw Width (all boxes)</h2>
+			<button onclick="unsetWidth()">Unset</button>
+		</div>
+		<div class="demo flexBox">
+			<h2>Add / Remove Demo Boxes</h2>
+			<button onclick="addFlexDemoBox()">Add Box</button>
+			<button onclick="removeFlexDemoBox()">Remove Box</button>
+		</div>
+	</div>
+</div>
+<!-- ROTATE -->
+<div class="subSection">
+	<h1>Rotate, Transform</h1>
+	<div id="rotDemoContainer">
+		<div id="rotateDemo">
+			<div class="propDemo cf ff">front</div>
+			<div class="propDemo cf fl">left</div>
+			<div class="propDemo cf fr">right</div>
+			<div class="propDemo cf fba">back</div>
+			<div class="propDemo cf ft">top</div>
+			<div class="propDemo cf fbt">bottom</div>
+		</div>
+	</div>
+	<div id="rotateDemoSliders" class="demoSliders"></div>
+</div>

@@ -222,6 +222,13 @@ function removeFlexDemoBox() {
 }
 
 d.addEventListener('DOMContentLoaded', function() {
+	$("#home").load('pages/about.html');
+	$("#projects").load('pages/projects.html');
+	$('#blender').load('pages/blender.html');
+	$('#cssref').load('pages/cssref.html');
+	$('#misc').load('pages/misc.html');
+	$('#clicker').load('pages/clicker.html');
+
 	const menuHamburger = d.getElementById("hamburger");
 	let navSection = 0;
 	let navSections = d.getElementsByClassName('section');

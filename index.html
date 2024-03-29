@@ -42,11 +42,19 @@
 		</div>
 	</div>
 	<div id="content">
+		<div id="background">
+			<div id="star-container">
+				<div id="star-pattern"></div>
+				<div id="star-gradient-overlay"></div>
+			</div>
+			<div id="stripe-container">
+				<div id="stripe-pattern"></div>
+			</div>
+		</div>
 		<div class="section" id="home"></div>
 		<div class="section" id="projects" style="text-align: left;"></div>
 		<div class="section" id="blender"></div>
-		<div class="section grid" id="cssref"></div>
-		<div class="section" id="misc">
+		<div class="section grid" id="cssref">
 			<div class="subSection" style="flex: 85%">
 				<h1>This page contains references for various CSS properties and their effects.</h1>
 				<p>Inside each box is a property and an example of what it does, along with a slider or other effector for changing that property in realtime, to see its effect</p>
@@ -130,6 +138,44 @@
 				</div>
 				<div id="rotateDemoSliders" class="demoSliders"></div>
 			</div>
+		</div>
+		<div class="section" id="misc">
+			<h1>cipher</h1>
+			<p style="display: inline;">Charater Range: </p><select class="form-select" id="cipherABselect" aria-label="Select character range">
+				<option value="default">a-z, A-Z, 0-9, and most ascii characters</option>
+				<option value="lcase">a-z</option>
+				<option value="ucase">A-Z</option>
+				<option value="both">a-z, A-Z</option>
+				<option value="num">a-z, A-Z, 0-9</option>
+				<option value="jphi">Hirigana, a-z, A-Z, 0-9</option>
+				<option value="jpka">Katakana, a-z, A-Z, 0-9</option>
+				<option value="jphika">Hirigana, Katakana, a-z, A-Z, 0-9</option>
+				<option value="unicode">almost every unicode character (buggy)</option>
+				<option value="custom">Custom</option>
+			</select>
+			<select class="form-select" id="cipherEDselect" aria-label="Select cipher type">
+				<option value="encode">Encode</option>
+				<option value="decode">Decode</option>
+			</select>
+			<div id="cipherCustomAB" style="display:none;">
+				<br>
+				<textarea id="cipherCustomIn" placeholder="Enter custom charater range here" rows="1" cols="50"></textarea>
+			</div>
+			<br>
+			<textarea id="cipherKey"   placeholder="Enter key here"  rows="1" cols="50"></textarea>
+			<br>
+			<textarea id="cipherInput" placeholder="Enter text here" rows="1" cols="50"></textarea>
+			<br>
+			<br>
+			<button id="cipherSubmit" onclick="cipher.doCipher()">Convert</button>
+			<p class="output" id="cipherOutput" style="display:none;"></p>
+
+			<h1>Want to make your text look <i>lIkE tHiS?</i> use this text converter!</h1>
+			<textarea id="textModifierInput" placeholder="Enter text here" rows="20" cols="50"></textarea>
+			<br>
+			<br>
+			<button id="textModifierSubmit" onclick="sarcasText()">Convert</button>
+			<p class="output" id="textModifierOutput" style="display:none;"></p>
 		</div>
 		<div class="section" id="clicker">
 			<div class="flexContainer centerFlexContent">

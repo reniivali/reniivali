@@ -134,12 +134,12 @@
 	src: url("firaCode.ttf") format("truetype");
 }
 
-.ff { background: hsla(  0, 100%, 50%, 0.7); }
-.fl { background: hsla( 60, 100%, 50%, 0.7); }
-.fr { background: hsla(120, 100%, 50%, 0.7); }
-.fba { background: hsla(180, 100%, 50%, 0.7); }
-.ft { background: hsla(240, 100%, 50%, 0.7); }
-.fbt { background: hsla(300, 100%, 50%, 0.7); }
+.ff  { background: hsla(  0, 100%, 50%, 0.7); transform: rotateY(  0deg) translateZ(106px); }
+.fl  { background: hsla( 60, 100%, 50%, 0.7); transform: rotateY(-90deg) translateZ(106px); }
+.fr  { background: hsla(120, 100%, 50%, 0.7); transform: rotateY( 90deg) translateZ(106px); }
+.fba { background: hsla(180, 100%, 50%, 0.7); transform: rotateY(180deg) translateZ(106px); }
+.ft  { background: hsla(240, 100%, 50%, 0.7); transform: rotateX( 90deg) translateZ(106px); }
+.fbt { background: hsla(300, 100%, 50%, 0.7); transform: rotateX(-90deg) translateZ(106px); }
 
 .cf {
 	position: absolute;
@@ -150,12 +150,6 @@
 	color: #cdd6f4;
 	line-height: 200px;
 }
-.ff {transform: rotateY(0deg) translateZ(106px)}
-.fl {transform: rotateY(-90deg) translateZ(106px)}
-.fr {transform: rotateY(90deg) translateZ(106px)}
-.fba {transform: rotateY(180deg) translateZ(106px)}
-.ft {transform: rotateX(90deg) translateZ(106px)}
-.fbt {transform: rotateX(-90deg) translateZ(106px)}
 
 a { color: #74c7ec; }
 .navText { margin: 0; }
@@ -179,6 +173,7 @@ button:hover { border-color: #f5c2e7; }
 	margin-right: 5px;
 	height: 99vh;
 	overflow: auto;
+	width: 95.5vw;
 }
 
 body {

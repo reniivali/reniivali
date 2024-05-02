@@ -524,7 +524,7 @@ button {
 	position: fixed;
 	z-index: 100;
 	transition: all .2s;
-	background-color: #181825;
+	background-color: #18182588;
 	padding: 0 10px 0 10px;
 	border-radius: 0 0 10px 0;
 }
@@ -582,6 +582,7 @@ textarea {
 		height: auto;
 		border-radius: 0 0 10px 0;
 		transition: all .2s;
+		z-index: 100;
 	}
 
 	.navHead h2 {

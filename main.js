@@ -271,6 +271,12 @@ d.addEventListener('DOMContentLoaded', function() {
 	for (let i = 0; i < navButtons.length; i++) {
 		navButtons[i].addEventListener('click', function() {
 			navSection = i;
+			if (window.innerWidth <= 600) {
+				d.getElementsByClassName("navMain")[0].style.marginLeft = "-155px";
+				d.getElementById("hamburger").style.left = "0";
+				d.getElementById("name").style.left = "-100px"
+				menuOpen = false;
+			}
 		});
 	}
 

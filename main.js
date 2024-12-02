@@ -273,10 +273,10 @@ d.addEventListener('DOMContentLoaded', function() {
 	for (let i = 0; i < navButtons.length; i++) {
 		navButtons[i].addEventListener('click', function() {
 			navSection = i;
-			if (navSection == 2 && !blendLoaded) {
+			/*if (navSection == 2 && !blendLoaded) {
 				blendLoaded = true;
 				$('#blender').load('pages/blender.html');
-			}
+			}*/
 			if (window.innerWidth <= 600) {
 				d.getElementsByClassName("navMain")[0].style.marginLeft = "-155px";
 				d.getElementById("hamburger").style.left = "0";

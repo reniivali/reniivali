@@ -158,22 +158,25 @@ a { color: #74c7ec; }
 .subSection h4 { margin: 0; }
 a:visited { color: #b4befe; }
 .imageCaption { padding: 5px; }
-#content { margin-left: 155px; }
 select:hover { border-color: #f5c2e7; }
 button:hover { border-color: #f5c2e7; }
 #boxShadowDemoSliders > div > input { width: 90%; }
 .section img:hover { box-shadow: rgba(0,0,0,0.5) 5px 5px 10px; }
+
+#content { 
+	margin-left: 155px;
+	width: calc(100% - 155px);
+}
 
 .section {
 	text-align: center;
 	margin-top: -99vh;
 	position: fixed;
 	z-index: 10;
-	margin-left: 5px;
-	margin-right: 5px;
 	height: 99vh;
+	margin-left: 5px;
 	overflow: auto;
-	width: 95.5vw;
+	width: calc(100% - 160px);
 }
 
 body {
@@ -231,7 +234,19 @@ body {
 	box-shadow: rgba(0,0,0,0.5) 5px 5px 10px;
 }
 
-#mainpfp {
+#headshots {
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1100px;
+}
+
+#headshots div {
+	flex-shrink: 0;
+	flex-grow: 1;
+}
+
+#headshots div img {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -251,6 +266,7 @@ body {
 	padding: 10px;
 	transition: all .5s;
 	margin-bottom: 10px;
+	width: calc(100% - 30px);
 }
 
 .subSection:hover {
@@ -537,6 +553,10 @@ button {
 	transition: all .2s;
 }
 
+.blenderImg {
+	width: 50%;
+}
+
 textarea {
 	border-radius: 5px;
 	border: #45475a 3px solid;
@@ -585,6 +605,8 @@ textarea {
 		z-index: 100;
 	}
 
+	.blenderImg {width: auto;}
+
 	.navHead h2 {
 		left: -100px;
 		transition: all .2s;
@@ -612,5 +634,6 @@ textarea {
 
 	#content {
 		margin-left: 0;
+		width: 100%;
 	}
 }

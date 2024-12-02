@@ -636,4 +636,8 @@ textarea {
 		margin-left: 0;
 		width: 100%;
 	}
+
+	.section {
+		width: 100%;
+	}
 }
